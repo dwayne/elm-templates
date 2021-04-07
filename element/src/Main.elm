@@ -2,7 +2,7 @@ module Main exposing (main)
 
 
 import Browser
-import Html exposing (Html, text)
+import Html exposing (Html)
 
 
 main : Program () Model Msg
@@ -10,8 +10,8 @@ main =
   Browser.element
     { init = init
     , update = update
-    , subscriptions = always Sub.none
     , view = view
+    , subscriptions = always Sub.none
     }
 
 
@@ -24,7 +24,7 @@ type alias Model =
 
 
 init : () -> (Model, Cmd msg)
-init () =
+init _ =
   ( Model "world"
   , Cmd.none
   )
@@ -51,4 +51,4 @@ update msg model =
 
 view : Model -> Html msg
 view { name } =
-  text <| "Hello, " ++ name ++ "!"
+  Html.text ("Hello, " ++ name ++ "!")
